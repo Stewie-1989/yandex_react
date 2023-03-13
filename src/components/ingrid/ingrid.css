@@ -1,0 +1,39 @@
+.center-burger {
+    width: 262px;
+    text-align: center;
+    font-style: normal;
+    font-weight: normal;
+    /*justify-content: center;*/
+}
+
+.custom-scroll {
+    overflow-y: scroll;
+}
+
+.constructor-element__row {
+    flex-wrap: wrap;
+}
+
+.constructor-element__price {
+    justify-content: center;
+}
+
+.counter-null{
+    justify-content: center;
+    display: none;
+}
+
+.counter-not-null{
+    justify-content: center;
+}
+
+.disabled {
+    pointer-events: none;
+    cursor: default;
+    color: #888;
+}
+
+.ingrid-hidden {
+    position: relative;
+    overflow: hidden;
+}
