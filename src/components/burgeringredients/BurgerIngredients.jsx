@@ -1,6 +1,6 @@
 import { Tab} from '@ya.praktikum/react-developer-burger-ui-components'
 import React from "react";
-import './burgeringredients.css'
+import './modules.css'
 import Ingrid from "../ingrid/Ingrid";
 import PropTypes from "prop-types";
 
@@ -8,14 +8,29 @@ export default function BurgerIngredients({dataBurger, dataBurgers, state}) {
 
     const [current, setCurrent] = React.useState('Булки')
 
+    const bun = React.useMemo(() => {
+        return state.data.filter(
+            (ingrid) => ingrid.type === "bun"
+        ).map((ingrid) => <Ingrid key={ingrid._id} data={ingrid} dataBurger={dataBurger}  dataBurgers={dataBurgers}/>)
+    }, [state.data, dataBurgers])
+
+    const sauce = React.useMemo(() => {
+        return state.data.filter(
+            (ingrid) => ingrid.type === "sauce"
+        ).map((ingrid) => <Ingrid key={ingrid._id} data={ingrid} dataBurger={dataBurger}  dataBurgers={dataBurgers}/>)
+    }, [state.data, dataBurgers])
+
+    const main = React.useMemo(() => {
+        return state.data.filter(
+            (ingrid) => ingrid.type === "main"
+        ).map((ingrid) => <Ingrid key={ingrid._id} data={ingrid} dataBurger={dataBurger}  dataBurgers={dataBurgers}/>)
+    }, [state.data, dataBurgers])
+
     function setValueAndFocus(value) {
         setCurrent(value)
         document.getElementById(value).scrollIntoView(true);
     }
 
-    let clickOnIngrid = (value) =>{
-        dataBurger(value)
-    };
     return (
         <section>
             <section className="mb-5 mt-10" style={{ width: '600px'}}>
@@ -41,31 +56,19 @@ export default function BurgerIngredients({dataBurger, dataBurgers, state}) {
                     Булки
                 </label>
                 <section className="constructor-element__row">
-                    {state.data.length &&
-                        state.data.filter(
-                            (ingrid) => ingrid.type === "bun"
-                        ).map((ingrid) => <Ingrid key={ingrid._id} data={ingrid} dataBurger={clickOnIngrid}  dataBurgers={dataBurgers}/>)
-                    }
+                    {state.data.length && bun}
                 </section>
                 <label id="Соусы" className="text text_type_main-large mt-10 constructor-element__row">
                     Соусы
                 </label>
                 <section className="constructor-element__row">
-                    {state.data.length &&
-                        state.data.filter(
-                        (ingrid) => ingrid.type === "sauce"
-                        ).map((ingrid) => <Ingrid key={ingrid._id} data={ingrid} dataBurger={clickOnIngrid}  dataBurgers={dataBurgers}/>)
-                    }
+                    {state.data.length && sauce}
                 </section>
                 <label id="Начинки" className="text text_type_main-large mt-10 constructor-element__row my-class">
                     Начинки
                 </label>
                 <section className="constructor-element__row">
-                    {state.data.length &&
-                        state.data.filter(
-                            (ingrid) => ingrid.type === "main"
-                        ).map((ingrid) => <Ingrid key={ingrid._id} data={ingrid} dataBurger={clickOnIngrid}  dataBurgers={dataBurgers}/>)
-                    }
+                    {state.data.length && main}
                 </section>
             </section>
         </section>
@@ -74,35 +77,36 @@ export default function BurgerIngredients({dataBurger, dataBurgers, state}) {
 
 BurgerIngredients.propTypes = {
     state: PropTypes.shape({
-        isLoading: PropTypes.bool,
-        hasError: PropTypes.bool,
+        isLoading: PropTypes.bool.isRequired,
+        hasError: PropTypes.bool.isRequired,
         data: PropTypes.arrayOf(PropTypes.shape({
-            calories: PropTypes.number,
-            carbohydrates: PropTypes.number,
-            fat: PropTypes.number,
-            image: PropTypes.string,
-            image_large: PropTypes.string,
-            image_mobile: PropTypes.string,
-            name: PropTypes.string,
-            price: PropTypes.number,
-            proteins: PropTypes.number,
-            type: PropTypes.string,
-            __v: PropTypes.number,
-            _id: PropTypes.string
-        }))
-    }),
+            calories: PropTypes.number.isRequired,
+            carbohydrates: PropTypes.number.isRequired,
+            fat: PropTypes.number.isRequired,
+            image: PropTypes.string.isRequired,
+            image_large: PropTypes.string.isRequired,
+            image_mobile: PropTypes.string.isRequired,
+            name: PropTypes.string.isRequired,
+            price: PropTypes.number.isRequired,
+            proteins: PropTypes.number.isRequired,
+            type: PropTypes.string.isRequired,
+            __v: PropTypes.number.isRequired,
+            _id: PropTypes.string.isRequired
+        }).isRequired).isRequired
+    }).isRequired,
     dataBurgers: PropTypes.arrayOf(PropTypes.shape({
-        calories: PropTypes.number,
-        carbohydrates: PropTypes.number,
-        fat: PropTypes.number,
-        image: PropTypes.string,
-        image_large: PropTypes.string,
-        image_mobile: PropTypes.string,
-        name: PropTypes.string,
-        price: PropTypes.number,
-        proteins: PropTypes.number,
-        type: PropTypes.string,
-        __v: PropTypes.number,
-        _id: PropTypes.string
-    }))
+        calories: PropTypes.number.isRequired,
+        carbohydrates: PropTypes.number.isRequired,
+        fat: PropTypes.number.isRequired,
+        image: PropTypes.string.isRequired,
+        image_large: PropTypes.string.isRequired,
+        image_mobile: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        price: PropTypes.number.isRequired,
+        proteins: PropTypes.number.isRequired,
+        type: PropTypes.string.isRequired,
+        __v: PropTypes.number.isRequired,
+        _id: PropTypes.string.isRequired
+    }).isRequired).isRequired,
+    dataBurger: PropTypes.func.isRequired
 };

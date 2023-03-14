@@ -2,7 +2,7 @@ import React from "react";
 import IngredientDetails from "../ingredientdetails/IngredientDetails";
 import {Counter} from "@ya.praktikum/react-developer-burger-ui-components/dist/ui/counter";
 import {CurrencyIcon} from "@ya.praktikum/react-developer-burger-ui-components";
-import './ingrid.css'
+import './modules.css'
 import Modal from "../modal/Modal";
 import PropTypes from "prop-types";
 
@@ -47,31 +47,32 @@ export default function Ingrid ({ data, dataBurger, dataBurgers}){
 
 Ingrid.propType = {
     dataBurgers: PropTypes.arrayOf(PropTypes.shape({
-        calories: PropTypes.number,
-        carbohydrates: PropTypes.number,
-        fat: PropTypes.number,
-        image: PropTypes.string,
-        image_large: PropTypes.string,
-        image_mobile: PropTypes.string,
-        name: PropTypes.string,
-        price: PropTypes.number,
-        proteins: PropTypes.number,
-        type: PropTypes.string,
-        __v: PropTypes.number,
-        _id: PropTypes.string
-    })),
+        calories: PropTypes.number.isRequired,
+        carbohydrates: PropTypes.number.isRequired,
+        fat: PropTypes.number.isRequired,
+        image: PropTypes.string.isRequired,
+        image_large: PropTypes.string.isRequired,
+        image_mobile: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        price: PropTypes.number.isRequired,
+        proteins: PropTypes.number.isRequired,
+        type: PropTypes.string.isRequired,
+        __v: PropTypes.number.isRequired,
+        _id: PropTypes.string.isRequired
+    }).isRequired).isRequired,
     data: PropTypes.shape({
-        calories: PropTypes.number,
-        carbohydrates: PropTypes.number,
-        fat: PropTypes.number,
-        image: PropTypes.string,
-        image_large: PropTypes.string,
-        image_mobile: PropTypes.string,
-        name: PropTypes.string,
-        price: PropTypes.number,
-        proteins: PropTypes.number,
-        type: PropTypes.string,
-        __v: PropTypes.number,
-        _id: PropTypes.string
-    })
+        calories: PropTypes.number.isRequired,
+        carbohydrates: PropTypes.number.isRequired,
+        fat: PropTypes.number.isRequired,
+        image: PropTypes.string.isRequired,
+        image_large: PropTypes.string.isRequired,
+        image_mobile: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        price: PropTypes.number.isRequired,
+        proteins: PropTypes.number.isRequired,
+        type: PropTypes.string.isRequired,
+        __v: PropTypes.number.isRequired,
+        _id: PropTypes.string.isRequired
+    }).isRequired,
+    dataBurger: PropTypes.func.isRequired
 };

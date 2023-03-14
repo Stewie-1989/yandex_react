@@ -1,4 +1,4 @@
-import './orderdetails.css'
+import './modules.css'
 import React from "react";
 import ok from './ok.png'
 export default function OrderDetails() {
