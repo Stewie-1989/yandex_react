@@ -1,0 +1,15 @@
+.display-none{
+    display: none;
+}
+
+.display-contents{
+    display: contents;
+}
+
+.constructor-element__row_cast span{
+    flex-wrap: inherit;
+}
+
+.my-scroll {
+    height: 360px;
+}

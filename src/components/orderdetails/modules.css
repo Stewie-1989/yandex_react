@@ -1,0 +1,18 @@
+.main-order {
+    justify-content: center;
+    width:500px;
+    height: 800px;
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-wrap: wrap;
+    z-index: 2;
+    flex-direction: column;
+    text-align: center;
+}
+.imag-order{
+    width: 40px;
+    height: 40px;
+}
